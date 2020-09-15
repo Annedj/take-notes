@@ -1,0 +1,22 @@
+<h1 class='text-center'>Notes</h1>
+<% if @notes.empty? %>
+  <p>You don't have any notes yet. Go ahead and add your first one!</p>
+<% else %>
+  <div class="container">
+    <div class="row">
+      <% @notes.each do |note| %>
+        <div class="col-3">
+          <%= render 'note', note: note %>
+        </div>
+      <% end %>
+      <div class="col-3">
+        <div data-controller="note" class="note-card">
+          <button class='btn btn-outline-primary btn-sm round' data-target="note.add" data-action="click->note#displayNote"><i class="fas fa-feather-alt"></i> Add a new note</button>
+          <div class="new-note-form d-none" data-target="note.new">
+            <%= render 'new' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

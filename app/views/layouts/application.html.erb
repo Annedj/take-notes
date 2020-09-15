@@ -4,16 +4,19 @@
     <title>NotesApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container">
+      <div class="row align-items-center justify-content-center <%= 'home-container' unless controller_name == 'notes' %>">
+        <div class="col-10 my-3">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

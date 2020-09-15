@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="text-center">
+  <h1>Write down your thoughts</h1>
+  <% if current_user && current_user.notes != [] %>
+    <p>Welcome back! You have <%= current_user.notes.count %> notes waiting for you!</p>
+  <% else %>
+    <p>You don't have any notes yet. Go ahead and add your first one!</p>
+  <% end %>
+  <%= link_to 'My notes', notes_path %>
+</div>
