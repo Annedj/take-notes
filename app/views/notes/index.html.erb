@@ -1,22 +1,26 @@
-<h1 class='text-center'>Notes</h1>
-<% if @notes.empty? %>
-  <p>You don't have any notes yet. Go ahead and add your first one!</p>
-<% else %>
-  <div class="container">
-    <div class="row">
-      <% @notes.each do |note| %>
-        <div class="col-3">
-          <%= render 'note', note: note %>
-        </div>
-      <% end %>
-      <div class="col-3">
-        <div data-controller="note" class="note-card">
-          <button class='btn btn-outline-primary btn-sm round' data-target="note.add" data-action="click->note#displayNote"><i class="fas fa-feather-alt"></i> Add a new note</button>
-          <div class="new-note-form d-none" data-target="note.new">
-            <%= render 'new' %>
-          </div>
+<div data-controller="note">
+  <h1 class='text-center'>Notes</h1>
+  <% if @notes.empty? %>
+    <p>You don't have any notes yet. Go ahead and add your first one!</p>
+  <% else %>
+    <div>
+      <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="content"><i class="fas fa-sort-alpha-down"></i></i> Sort by ABC</button>
+    <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="date"><i class="fas fa-history"></i></i> Sort by date</button>
+</div>
+<div class="container">
+  <div class="row" data-target="note.list" >
+    <%= render 'notes_list', notes: @notes %>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="">
+        <button class='btn btn-outline-primary btn-sm round' data-target="note.add" data-action="click->note#displayNote"><i class="fas fa-feather-alt"></i> Add a new note</button>
+        <div class="new-note-form d-none" data-target="note.new">
+          <%= render 'new' %>
         </div>
       </div>
     </div>
   </div>
+</div>
 <% end %>
+</div>

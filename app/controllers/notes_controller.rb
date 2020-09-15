@@ -9,8 +9,7 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user = current_user
     if @note.save
-      flash[:notice] = 'Note was successfully created'
-      redirect_to notes_path
+      render @note
     else
       flash[:alert] = 'Note could not be created'
       render :new
@@ -20,8 +19,7 @@ class NotesController < ApplicationController
   def update
     @note.update(note_params)
     if @note.save
-      flash[:notice] = 'Note was updated!'
-      redirect_to notes_path
+      render @note
     else
       flash[:alert] = 'Note could not be updated'
       render :new
