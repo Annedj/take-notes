@@ -13,4 +13,3 @@ ActiveStorage.start()
 
 import "controllers";
 import "bootstrap";
-
