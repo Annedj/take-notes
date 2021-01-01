@@ -1,13 +1,13 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-lewagon <%= dark? ? 'navbar-dark bg-dark' : 'navbar-light bg-white' %>">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "paper.svg" %>
-    <span>Take Notes</span>
+    <span>Notes pad</span>
+    <%= @dark %>
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -15,22 +15,20 @@
         <li class="nav-item active">
           <%= link_to "Home", "/", class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Add a note", new_note_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "horse.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My Notes", notes_path, class: "dropdown-item" %>
-            <%= link_to "Contact", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
       <% else %>
         <li class="nav-item">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
+      <li class="nav-item">
+        <%= link_to toggle_path, class: "#{dark? ? 'btn btn-outline-light' : 'btn btn-outline-dark'} ml-3" do %>
+          <% if dark? %>
+            <i class="fas fa-sun pr-1"></i>Light mode
+          <% else %>
+            <i class="fas fa-moon pr-1"></i>Dark mode
+          <% end %>
+        <% end %>
+      </li>
     </ul>
   </div>
 </div>

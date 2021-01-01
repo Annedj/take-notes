@@ -1,7 +1,11 @@
 class NotesController < ApplicationController
   before_action :set_note, only: %i[edit update destroy]
+
   def index
     @notes = current_user.notes.all
+  end
+
+  def new
     @note = Note.new
   end
 
@@ -9,11 +13,14 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user = current_user
     if @note.save
-      render @note
+      redirect_to notes_path
     else
       flash[:alert] = 'Note could not be created'
       render :new
     end
+  end
+
+  def edit
   end
 
   def update
@@ -22,7 +29,7 @@ class NotesController < ApplicationController
       render @note
     else
       flash[:alert] = 'Note could not be updated'
-      render :new
+      render :edit
     end
   end
 

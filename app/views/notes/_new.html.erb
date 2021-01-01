@@ -1,5 +1,0 @@
-<%= simple_form_for @note, remote: true, data: { type: "html", action: "ajax:success->note#onPostSuccess" } do |f| %>
-  <%= f.input :content, label: false, input_html: { data: { target: "note.content" } } %>
-  <%= f.submit "Create note", class: "btn btn-outline-primary btn-sm" %>
-  <span><i class="fas fa-times" data-action="click->note#displayNote"></i></span>
-<% end %>

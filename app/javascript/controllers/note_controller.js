@@ -12,7 +12,15 @@ import { Controller } from "stimulus";
 export default class extends Controller {
   static targets = ["add", "new", "list", "content", "card", "edit", "sort"];
   connect() {
-    // this.addTarget.textContent = "Hello, Stimulus!";
+    // console.log('document.cookie', document.cookie);
+    // let theme;
+    // if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+    //   theme = 'light';
+    // } else {
+    //   theme = 'dark';
+    // };
+    // document.cookie = `theme=${theme}`;
+    // console.log('document.cookie2', document.cookie);
   }
   displayNote() {
     this.newTarget.classList.toggle("d-none");

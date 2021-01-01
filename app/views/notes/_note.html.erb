@@ -1,12 +1,12 @@
 <div class="col-3">
-  <div class="note-card" data-action="note#editNote" data-target="note.card">
-    <p><%= note.content %></p>
-    <%= link_to note_path(note), method: :delete, remote: true do %>
+  <div class="note-card <%= dark_class? %>">
+    <%= turbo_frame_tag "edit_note" do %>
+      <%= link_to edit_note_path(note) do %>
+        <p><%= note.content %></p>
+      <% end %>
+    <% end %>
+    <%= link_to note_path(note), method: :delete do %>
       <span><i class="fas fa-times"></i></span>
     <% end %>
-    <%# <a href="" data-target="note.edit-btn" data-action="click->note#editNote"><i class="fas fa-pencil-alt"></i></a> %>
-    <%# <div class="new-note-form d-none" data-target="note.edit"> %>
-    <%# <%= render 'edit', note: note %>
-    <%# </div> %>
   </div>
 </div>

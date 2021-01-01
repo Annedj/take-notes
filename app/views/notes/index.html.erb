@@ -3,24 +3,21 @@
   <% if @notes.empty? %>
     <p>You don't have any notes yet. Go ahead and add your first one!</p>
   <% else %>
-    <div>
-      <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="content"><i class="fas fa-sort-alpha-down"></i></i> Sort by ABC</button>
-    <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="date"><i class="fas fa-history"></i></i> Sort by date</button>
-</div>
-<div class="container">
-  <div class="row" data-target="note.list" >
-    <%= render 'notes_list', notes: @notes %>
-  </div>
-  <div class="row">
-    <div class="col-3">
-      <div class="">
-        <button class='btn btn-outline-primary btn-sm round' data-target="note.add" data-action="click->note#displayNote"><i class="fas fa-feather-alt"></i> Add a new note</button>
-        <div class="new-note-form d-none" data-target="note.new">
-          <%= render 'new' %>
+    <div class="container">
+      <!-- <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="content"><i class="fas fa-sort-alpha-down"></i></i> Sort by ABC</button>
+      <button class='btn btn-outline-primary btn-sm round' data-target="note.sort" data-action="click->note#sortNotes" data-note-sort="date"><i class="fas fa-history"></i></i> Sort by date</button> -->
+      <%= turbo_frame_tag 'notes' do %>
+        <div class="row" data-target="note.list" >
+          <% @notes.order(:created_at).each do |note| %>
+            <%= render 'note', note: note %>
+          <% end %>
+          <div class="col-3">
+            <div class="new-note-card">
+              <%= turbo_frame_tag "new_note", src: new_note_path(@note), target: '_top' %>
+            </div>
+          </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  </div>
-</div>
-<% end %>
+  <% end %>
 </div>

@@ -1,7 +1,44 @@
 .note-card {
-  background-color: #ffe78f;
-  min-height: 160px;
+  min-height: 170px;
   height: auto;
   margin: 0.8rem 0;
   padding: 1rem;
+  position: relative;
+  background-color: #ffe070;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  i {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    padding: 10px;
+  }
+  #note_content {
+    background-color: #ffe78f;
+    color: inherit;
+    border: none;
+    padding: 0;
+  }
 }
+
+.new-note-card {
+  min-height: 160px;
+  height: auto;
+  margin: 0.8rem 0;
+}
+
+.note-card.dark {
+  background-color: $orange;
+  a { color: #f6e9e9; }
+  #note_content {
+    background-color: $orange-light;
+    color: #f6e9e9;
+  }
+}
+
+// turbo-frame {
+//   display: block;
+//   border: 1px solid blue;
+// }

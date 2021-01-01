@@ -1,0 +1,4 @@
+<%= simple_form_for @note do |f| %>
+  <%= f.input :content, label: false, value: @note.content, input_html: { rows: 4 } %>
+  <%= f.submit "Save note", class: "btn #{dark? ? 'btn-light' : 'btn-primary'} btn-sm" %>
+<% end %>
