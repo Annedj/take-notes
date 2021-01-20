@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
   def toggle_theme
     theme = cookies[:theme]
     cookies[:theme] = theme == 'light' ? 'dark' : 'light'
-    redirect_to(request.referrer || root_path)
+    p controller_path
+    p request.referrer
+    p '***************'
+    if request.referrer.match(/users/)
+      redirect_to(request.referrer)
+    else
+      redirect_to(request.referrer)
+    end
   end
 end

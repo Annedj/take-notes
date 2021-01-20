@@ -16,7 +16,7 @@
     <%= render 'shared/flashes' %>
     <div class="container">
       <div class="row align-items-center justify-content-center <%= 'home-container' unless controller_name == 'notes' %>">
-        <div class="col-10 my-3">
+        <div class="col-<%= controller_path.match(/devise/) ? '5' : '10' %> my-3">
           <%= yield %>
         </div>
       </div>
