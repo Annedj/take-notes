@@ -30,11 +30,11 @@
 }
 
 .note-card.dark {
-  background-color: $orange;
-  a { color: #f6e9e9; }
+  background-color: $orange-bg;
+  a { color: $light-white; }
   #note_content {
-    background-color: $orange-light;
-    color: #f6e9e9;
+    background-color: $orange-bg;
+    color: $light-white;
   }
 }
 

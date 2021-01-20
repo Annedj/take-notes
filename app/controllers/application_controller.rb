@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:set_theme, :toggle_theme]
 
   def set_theme
     cookies[:theme] = 'light'

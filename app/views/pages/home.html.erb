@@ -1,10 +1,11 @@
-
 <div class="text-center">
   <h1>Write down your thoughts</h1>
-  <% if current_user && current_user.notes != [] %>
-    <p>Welcome back! You have <%= current_user.notes.count %> notes waiting for you!</p>
+  <% if !current_user %>
+    <p>Welcome! Please <%= link_to 'login', new_user_session_path %> or <%= link_to 'sign up', new_user_registration_path %> to start taking notes!</p>
+  <% elsif current_user && current_user.notes != [] %>
+    <p>Welcome back! You have <%= link_to "#{current_user.notes.count} notes", notes_path %> waiting for you!</p>
   <% else %>
-    <p>You don't have any notes yet. Go ahead and add your first one!</p>
+    <p>Welcome! You don't have any notes yet. Go ahead and add your first one!</p>
+    <%= link_to 'My notes', notes_path %>
   <% end %>
-  <%= link_to 'My notes', notes_path %>
 </div>

@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-lewagon <%= dark? ? 'navbar-dark bg-dark' : 'navbar-light bg-white' %>">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "paper.svg" %>
-    <span>Notes pad</span>
+    <span>Sticky noted</span>
     <%= @dark %>
   <% end %>
 
@@ -9,11 +9,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse <%= dark_class? %>" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to "Home", "/", class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
         <li class="nav-item">
