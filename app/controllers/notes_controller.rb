@@ -2,7 +2,7 @@ class NotesController < ApplicationController
   before_action :set_note, only: %i[edit update destroy]
 
   def index
-    @notes = current_user.notes.all
+    @notes = current_user.notes.order(:created_at)
   end
 
   def new

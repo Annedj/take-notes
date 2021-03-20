@@ -9,12 +9,21 @@
     text-decoration: none;
     color: inherit;
   }
-  i {
+  .fas.fa-times {
     position: absolute;
     bottom: 4px;
     right: 4px;
     padding: 10px;
   }
+
+  .fas.fa-grip-vertical {
+    cursor: move; // fallback if grab is not available
+    cursor: grab;
+    &:active {
+      cursor: grabbing;
+    }
+  }
+
   #note_content {
     background-color: #ffe78f;
     color: inherit;

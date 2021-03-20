@@ -1,5 +1,6 @@
-<div class="col-3">
+<div class="col-3" data-target="drag-and-drop.id" data-id="<%= note.id %>" data-klass="<%= note.class %>">
   <div class="note-card <%= dark_class? %>">
+    <i class="fas fa-grip-vertical"></i>
     <%= turbo_frame_tag "edit_note" do %>
       <%= link_to edit_note_path(note) do %>
         <p><%= note.content %></p>
